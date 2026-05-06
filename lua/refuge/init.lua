@@ -1,6 +1,6 @@
-local colors = require("red-phosphor.colors")
-local config = require("red-phosphor.config")
-local utils = require("red-phosphor.utils")
+local colors = require("refuge.colors")
+local config = require("refuge.config")
+local utils = require("refuge.utils")
 local theme = {}
 
 function theme.setup(values)
@@ -13,7 +13,7 @@ function theme.colorscheme()
         vim.api.nvim_command("syntax reset")
     end
     vim.o.termguicolors = true
-    vim.g.colors_name = "red-phosphor"
+    vim.g.colors_name = "refuge"
 
     for color, hex in pairs(config.palette_overrides) do
         colors[color] = hex

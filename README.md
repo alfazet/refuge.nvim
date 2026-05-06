@@ -1,9 +1,9 @@
-# Red Phosphor
+# Refuge
 
 A color scheme to illuminate your editor. Does not require frequent replacement to keep glowing.
 
 <p align="center">
-  <img src="https://github.com/alfazet/red-phosphor.nvim/blob/main/images/example.png">
+  <img src="https://github.com/alfazet/refuge.nvim/blob/main/images/example.png">
 </p>
 
 ## Installation
@@ -11,9 +11,9 @@ A color scheme to illuminate your editor. Does not require frequent replacement 
 Example setup with `lazy.nvim`:
 ```lua
 return {
-    "alfazet/red-phosphor.nvim",
+    "alfazet/refuge.nvim",
     config = function()
-        local theme = require("red-phosphor/init")
+        local theme = require("refuge/init")
         theme.setup({
             -- default: true
             transparent = true,
