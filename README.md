@@ -3,7 +3,7 @@
 A color scheme to illuminate your editor. Does not require frequent replacement to keep glowing.
 
 <p align="center">
-  <img src="https://github.com/alfazet/refuge.nvim/blob/main/images/example.png">
+  <img src="https://files.alfazet.xyz/public/refuge_theme_example.png">
 </p>
 
 ## Installation
