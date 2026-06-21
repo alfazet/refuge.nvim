@@ -19,72 +19,96 @@ function theme.colorscheme()
         colors[color] = hex
     end
 
-    local bg = (config.transparent and "none") or colors.bg1
+    local bg = (config.transparent and "none") or colors.bg_a
+    local fg = colors.fg_c
     local groups = {
-        Normal = { bg = bg, fg = colors.fg1 },
-        Comment = { fg = utils.mix(colors.bg5, colors.fg1, 0.75), italic = true },
-        Constant = { fg = colors.red3 },
+        Normal = { bg = bg, fg = fg },
+        Comment = { fg = utils.mix(colors.fg_b, colors.bg_b, 0.5), italic = true },
+
+        String = { fg = colors.sec_a },
+        Character = { link = "String" },
+        SpecialChar = { link = "String" },
+
+        Constant = { fg = colors.sec_b },
         Define = { link = "Constant" },
         Macro = { link = "Constant" },
-        Boolean = { fg = colors.red3 },
-        String = { fg = colors.beige3 },
-        Character = { fg = colors.beige3 },
-        SpecialChar = { fg = colors.beige3 },
-        Number = { fg = utils.mix(colors.red3, colors.fg1, 0.75) },
+        Boolean = { link = "Constant" },
+
+        Number = { fg = colors.sec_c },
+        Operator = { fg = colors.fg_b },
         Float = { link = "Number" },
 
-        Function = { fg = colors.pink1 },
+        Keyword = { fg = colors.pri_a },
+        Statement = { link = "Keyword" },
+        Conditional = { link = "Keyword" },
+        Label = { link = "Keyword" },
+        PreProc = { link = "Keyword" },
+
+        Function = { fg = colors.pri_b },
         Identifier = { link = "Function" },
         Method = { link = "Function" },
         Property = { link = "Function" },
         Field = { link = "Function" },
         Parameter = { link = "Function" },
-        Keyword = { fg = colors.red3 },
-        Statement = { link = "Keyword" },
-        Conditional = { link = "Keyword" },
-        Label = { link = "Keyword" },
-        PreProc = { link = "Keyword" },
-        Operator = { fg = utils.mix(colors.red3, colors.fg1, 0.5) },
-        Type = { fg = colors.pink3 },
+
+        Type = { fg = colors.pri_c },
         Struct = { link = "Type" },
         Class = { link = "Type" },
         Exception = { link = "Type" },
-        Delimiter = { fg = utils.mix(colors.pink1, colors.fg1, 0.5) },
-        Special = { fg = utils.mix(colors.pink1, colors.fg1, 0.5) },
-        SpecialKey = { fg = colors.pink1 },
-        Conceal = { fg = colors.pink1 },
 
-        LineNr = { fg = utils.mix(colors.bg5, colors.beige3, 0.5) },
+        Delimiter = { fg = colors.fg_a },
+        Special = { link = "Delimiter" },
+        SpecialKey = { link = "Delimiter" },
+        Conceal = { link = "Delimiter" },
+
+        LineNr = { fg = utils.mix(colors.fg_a, colors.bg_c, 0.5) },
+        CursorLineNr = { fg = colors.fg_a },
         NonText = { link = "LineNr" },
-        CursorLineNr = { fg = colors.beige3 },
-        IncSearch = { bg = colors.yellow, fg = colors.bg3 },
+
+        IncSearch = { bg = colors.att_c, fg = colors.bg_a },
         Substitute = { link = "IncSearch" },
         Search = { link = "IncSearch" },
-        MatchParen = { bg = colors.yellow, fg = colors.bg3 },
-        QuickFixLine = { fg = colors.fg5 },
-        QuickFixList = { fg = colors.fg3 },
+        MatchParen = { link = "IncSearch" },
+
+        QuickFixList = { fg = fg },
+        QuickFixLine = { fg = colors.fg_a },
         Directory = { link = "QuickFixList" },
-        StatusLine = { bg = bg, fg = colors.red1 },
+
+        StatusLine = { bg = bg, fg = colors.pri_c },
         Question = { link = "StatusLine" },
         MoreMsg = { link = "StatusLine" },
         ModeMsg = { link = "StatusLine" },
-        Visual = { bg = colors.pink3, fg = colors.bg3 },
+
+        Visual = { bg = colors.fg_a, fg = colors.bg_a },
         VisualNOS = { link = "Visual" },
-        PMenu = { bg = colors.bg3 },
-        PMenuSel = { bg = colors.bg5 },
-        ExtraWhitespace = { fg = colors.yellow },
-        Ignore = { fg = colors.bg3 },
-        Todo = { fg = colors.yellow, bold = true },
-        Error = { fg = colors.red5 },
+
+        PMenu = { bg = colors.bg_a },
+        PMenuSel = { bg = colors.bg_b },
+        PMenuBorder = { fg = colors.bg_c },
+        Ignore = { fg = colors.bg_c },
+
+        Error = { fg = colors.att_a },
+        ExtraWhitespace = { link = "Error" },
+        Todo = { link = "Error" },
+
+        Added = { fg = colors.fg_a },
+        Removed = { fg = colors.pri_a },
+        Changed = { fg = colors.ter_a },
+
+        DiffAdd = { fg = colors.fg_a },
+        DiffDelete = { fg = colors.pri_a },
+        DiffChange = { fg = colors.ter_a },
+        DiffText = { fg = colors.sec_a },
+
         Underlined = { underline = true },
         Bold = { bold = true },
         Italic = { italic = true },
 
-        DiagnosticError = { fg = colors.red3 },
-        DiagnosticWarn = { fg = colors.yellow },
-        DiagnosticInfo = { fg = colors.beige3 },
-        DiagnosticHint = { fg = colors.pink3 },
-        DiagnosticOk = { fg = colors.fg1 },
+        DiagnosticError = { fg = colors.att_a },
+        DiagnosticWarn = { fg = colors.att_c },
+        DiagnosticInfo = { fg = colors.ter_a },
+        DiagnosticHint = { fg = colors.ter_c },
+        DiagnosticOk = { fg = fg },
 
         DiagnosticUnderlineError = { undercurl = true },
         DiagnosticUnderlineWarn = { undercurl = true },
@@ -92,7 +116,7 @@ function theme.colorscheme()
         DiagnosticUnderlineHint = { undercurl = true },
         DiagnosticUnderlineOk = { undercurl = true },
 
-        ["@text"] = { fg = colors.fg1 },
+        ["@text"] = { fg = fg },
         ["@texcolors.literal"] = { link = "Property" },
         ["@texcolors.strong"] = { link = "Bold" },
         ["@texcolors.italic"] = { link = "Italic" },

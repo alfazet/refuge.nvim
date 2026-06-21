@@ -9,12 +9,12 @@ local function hex_to_rgb(hex)
     return { tonumber(red, 16), tonumber(green, 16), tonumber(blue, 16) }
 end
 
-function M.mix(fg, bg, alpha)
-    bg = hex_to_rgb(bg)
-    fg = hex_to_rgb(fg)
+function M.mix(x, y, t)
+    y = hex_to_rgb(y)
+    x = hex_to_rgb(x)
 
     local blendChannel = function(i)
-        local ret = (alpha * fg[i] + ((1 - alpha) * bg[i]))
+        local ret = (t * x[i] + ((1 - t) * y[i]))
         return math.floor(math.min(math.max(0, ret), 255) + 0.5)
     end
 
